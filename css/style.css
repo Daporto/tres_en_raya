@@ -1,0 +1,80 @@
+#titulo
+{
+    color: red;
+    text-align: center;
+    padding-top: 30px;
+}
+
+#div-table
+{
+    display: flex; 
+    justify-content: center;
+}
+
+table
+{   
+    margin-top: 100px; 
+    border-spacing: 0px;
+}
+
+th
+{
+    border: solid black 4px;
+    padding: 50px;
+}
+
+#up-left
+{
+    border-left: 0px;
+    border-top: 0px;
+}
+
+#up-middle
+{
+    border-top: 0px;
+}
+
+#up-right
+{
+    border-right: 0px;
+    border-top: 0px;
+}
+
+#middle-left
+{
+    border-left: 0px;
+}
+
+#middle-right
+{
+    border-right: 0px;
+}
+
+#down-left
+{
+    border-left: 0px;
+    border-bottom: 0px;
+}
+
+#down-middle
+{
+    border-bottom: 0px;
+}
+
+#down-right
+{
+    border-right: 0px;
+    border-bottom: 0px;
+}
+
+.x
+{
+    width: 70px;
+    filter: invert(30%) sepia(43%) saturate(3514%) hue-rotate(213deg) brightness(95%) contrast(80%);
+}
+
+.circle
+{
+    width: 70px;
+    filter: invert(62%) sepia(27%) saturate(1105%) hue-rotate(55deg) brightness(96%) contrast(87%);
+}
