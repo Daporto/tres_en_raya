@@ -4,10 +4,20 @@
 <head>
     <title>Tres en línea</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/functions.js"></script>
 </head>
 
 <body>
     <h1 id="titulo">Tres en línea</h1>
+
+    <div id="menu">
+    <h3 style="text-align: center;">Escoge con que figuras quieres jugar</h3>
+    <div id="seleccionar">
+        <button id="boton" onclick="showboard()"><img src="imgs/x.svg" class="x"></button>
+        <button id="boton" onclick="showboard()"><img src="imgs/circle.svg" class="circle"></button>
+    </div>
+    </div>
+
     <div id="div-table">
     <table id="tabla">
         <thead></thead>
@@ -31,6 +41,7 @@
         </tbody>
     </table>
     </div>
+
 </body>
 <footer>
 

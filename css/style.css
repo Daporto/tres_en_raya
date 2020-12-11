@@ -1,14 +1,38 @@
 #titulo
 {
-    color: red;
+    color: #F26C03;
     text-align: center;
     padding-top: 30px;
 }
 
 #div-table
 {
-    display: flex; 
+    display: none;
     justify-content: center;
+}
+
+#menu
+{
+    display: block;
+    padding: 15px;
+}
+
+#seleccionar
+{
+    margin: auto;
+    padding-top: 15px;
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#boton
+{
+    cursor: pointer;
+    border: 0px;
+    border-radius: 15%;
+    padding: 10px;
+    background-color: #C2E7DF;
 }
 
 table
