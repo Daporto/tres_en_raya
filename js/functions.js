@@ -44,7 +44,6 @@ function validardatos(){
         alert("no ha seleccionado ninguna figura");
     }else{
         const n = document.getElementById("ingrese-n").value;
-        console.log("valor de n: "+(n%1));
         if(n == ""){
             alert("no se ha ingresado ningún valor en el númeor de filas");
         }else if(n % 1 != 0){
@@ -55,4 +54,8 @@ function validardatos(){
             showboard(selectedfigure, n);
         }
     }
+}
+
+function focusoncell(){
+
 }

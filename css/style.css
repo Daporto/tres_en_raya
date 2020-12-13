@@ -62,7 +62,8 @@ table
 th
 {
     border: solid black 4px;
-    padding: 50px;
+    min-width: 90px;
+    height: 90px;
 }
 
 .up-left

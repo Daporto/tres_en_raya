@@ -2,6 +2,19 @@ class Partida {
     constructor(ficha, nfilas){
         this.ficha = ficha;
         this.nfilas = nfilas;
+        this.createimage();
+    }
+
+    createimage(){
+        this.fichaimagen = document.createElement("img");
+        console.log("figu seleccionada: "+this.ficha)
+        if(this.ficha=='x'){
+            this.fichaimagen.src = "imgs/x.svg";
+            this.fichaimagen.className = "x";
+        }else{
+            this.fichaimagen.src = "imgs/circle.svg";
+            this.fichaimagen.className = "circle";
+        }
     }
 
     createboard() {
@@ -36,7 +49,11 @@ class Partida {
                 }else if(i==this.nfilas-1 && j==this.nfilas-1){
                     columna.className = "down-right";
                 }
-
+               const image = this.fichaimagen;
+                columna.onpointerenter = function(){this.appendChild(image)};
+                columna.onpointerleave= function(){
+                    this.innerHTML = "";
+                };
                 fila.appendChild(columna);   
             }
             table.appendChild(fila);
