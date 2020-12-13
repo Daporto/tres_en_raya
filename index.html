@@ -12,24 +12,19 @@
     <h1 id="titulo">Tres en línea</h1>
 
     <div id="menu">
-        <h3 style="text-align: center;">Escoge con que figuras quieres jugar</h3>
+        <h3 style="text-align: center;">Escoge con que figura quieres jugar</h3>
         <div id="seleccionar">
-            <button id="boton" onclick="showboard()"><img src="imgs/x.svg" class="x"></button>
-            <button id="boton" onclick="showboard()"><img src="imgs/circle.svg" class="circle"></button>
-        </div>
-        <div id="div-ingrese-n">
-            <form style="text-align: center;">
-                <label for="ingrese-n">
-                    <h3>Ingrese número de columnas del tablero (mínimo 3)</h3>
-                </label>
-                <input id="ingrese-n" type="number">
-                <input type="submit" value="Enviar">
-            </form>
-        </div>
+            <button id="botonx" onclick="selectfigure('x')"><img src="imgs/x.svg" class="x"></button>
+            <button id="botonc" onclick="selectfigure('c')"><img src="imgs/circle.svg" class="circle"></button>
+        </div><br>
+        <h3>Ingrese número de columnas del tablero (mínimo 3)</h3>
+        <input id="ingrese-n" type="number">
+        <input type="button" onclick="validardatos()" value="Enviar">
     </div>
 
     <div id="div-table">
-        <button id="back"><img src="https://img.icons8.com/flat_round/64/000000/circled-left-2--v1.png"/></button>
+        <button id="back" onclick="hideboard_showmenu()"><img
+                src="https://img.icons8.com/flat_round/64/000000/circled-left-2--v1.png" /></button>
         <!-- <table id="tabla">
         <thead></thead>
         <tbody>

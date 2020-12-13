@@ -6,6 +6,10 @@ class Partida {
 
     createboard() {
         const divtable = document.querySelector("#div-table");
+        const tableold = document.querySelector("#div-table table");
+        if(tableold != null){
+            tableold.remove();
+        }
         const table = document.createElement("table");
         table.id = "tabla";
         for(var i=0; i<this.nfilas; i++){

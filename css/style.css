@@ -14,6 +14,7 @@
 #menu
 {
     display: block;
+    text-align: center;
     padding: 15px;
 }
 
@@ -42,8 +43,9 @@
     background-color: transparent;
 }
 
-#boton
+#botonx, #botonc
 {
+    outline: none;
     cursor: pointer;
     border: 0px;
     border-radius: 15%;
