@@ -16,7 +16,27 @@ class Partida {
             const fila = document.createElement("tr");
             for(var j=0; j<this.nfilas; j++){
                 const columna = document.createElement("th");
-                columna.textContent = "hola que tal";
+                
+                if(i==0 && j==0){
+                    columna.className = "up-left";
+                }else if(i==0 && j>0 && j<this.nfilas-1){
+                    columna.className = "up-middle";
+                }else if(i==0 && j==this.nfilas-1){
+                    columna.className = "up-right";
+                }else if(i>0 && i<this.nfilas-1 && j==0){
+                    columna.className = "middle-left";
+                }else if(i>0 && i<this.nfilas-1 && j>0 && j<this.nfilas-1){
+                    columna.className = "middle-middle";
+                }else if(i>0 && i<this.nfilas-1 && j==this.nfilas-1){
+                    columna.className = "middle-right";
+                }else if(i==this.nfilas-1 && j==0){
+                    columna.className = "down-left";
+                }else if(i==this.nfilas-1 && j>0 && j<this.nfilas-1){
+                    columna.className = "down-middle";
+                }else if(i==this.nfilas-1 && j==this.nfilas-1){
+                    columna.className = "down-right";
+                }
+
                 fila.appendChild(columna);   
             }
             table.appendChild(fila);
