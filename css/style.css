@@ -121,3 +121,15 @@ th
     width: 70px;
     filter: invert(62%) sepia(27%) saturate(1105%) hue-rotate(55deg) brightness(96%) contrast(87%);
 }
+
+.xopaco
+{
+    width: 70px;
+    filter: invert(85%) sepia(10%) saturate(635%) hue-rotate(186deg) brightness(97%) contrast(83%);
+}
+
+.circleopaco
+{
+    width: 70px;
+    filter: invert(90%) sepia(16%) saturate(499%) hue-rotate(61deg) brightness(93%) contrast(93%);
+}
