@@ -70,6 +70,7 @@ class Partida {
                         const f = this.closest('tr').rowIndex;
                         const c = this.cellIndex;
                         this.par.board[f][c]=1;
+                        console.log("(0,0): "+this.par.board[0][0]);
                         this.appendChild(fixedimage);
                     }
                 } else {
@@ -82,7 +83,10 @@ class Partida {
                         this.onpointerleave = NaN;
                         this.innerHTML = "";
                         this.onclick = NaN;
-                        console.log("indexc: " + this.cellIndex);
+                        const f = this.closest('tr').rowIndex;
+                        const c = this.cellIndex;
+                        this.par.board[f][c]=1;
+                        console.log("(0,0): "+this.par.board[0][0]);
                         this.appendChild(fixedimage);
                     }
                 }
