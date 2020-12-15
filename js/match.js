@@ -7,14 +7,20 @@ class Partida {
     }
 
     createimage() {
-        this.fichaimagen = document.createElement("img");
-        this.fichaimagen2 = document.createElement("img");
+        this.fichaimagenc = document.createElement("img");
+        this.fichaimagenf = document.createElement("img");
         if (this.ficha == 'x') {
-            this.fichaimagen.src = "imgs/x.svg";
-            this.fichaimagen.className = "xopaco";
+            this.fichaimagenc.src = "imgs/x.svg";
+            this.fichaimagenc.className = "xopaco";
+
+            this.fichaimagenf.src = "imgs/x.svg";
+            this.fichaimagenf.className = "x";
         } else {
-            this.fichaimagen.src = "imgs/circle.svg";
-            this.fichaimagen.className = "circleopaco";
+            this.fichaimagenc.src = "imgs/circle.svg";
+            this.fichaimagenc.className = "circleopaco";
+
+            this.fichaimagenf.src = "imgs/circle.svg";
+            this.fichaimagenf.className = "circle";
         }
     }
 
@@ -53,49 +59,28 @@ class Partida {
                 } else if (i == this.nfilas - 1 && j == this.nfilas - 1) {
                     columna.className = "down-right";
                 }
-                const image = this.fichaimagen;
-                columna.onpointerenter = function () { this.appendChild(image) };
-                columna.onpointerleave = function () { this.innerHTML = ""; };
                 columna.par = this;
-                if (this.ficha == 'x') {
-                    columna.onclick = function () {
-                        const fixedimage = document.createElement("img");
-                        fixedimage.src = "imgs/x.svg";
-                        fixedimage.className = "x";
-
-                        this.onpointerenter = NaN;
-                        this.onpointerleave = NaN;
-                        this.innerHTML = "";
-                        this.onclick = NaN;
-                        const f = this.closest('tr').rowIndex;
-                        const c = this.cellIndex;
-                        this.par.board[f][c]=1;
-                        console.log("(0,0): "+this.par.board[0][0]);
-                        this.appendChild(fixedimage);
-                    }
-                } else {
-                    columna.onclick = function () {
-                        const fixedimage = document.createElement("img");
-                        fixedimage.src = "imgs/circle.svg";
-                        fixedimage.className = "circle";
-
-                        this.onpointerenter = NaN;
-                        this.onpointerleave = NaN;
-                        this.innerHTML = "";
-                        this.onclick = NaN;
-                        const f = this.closest('tr').rowIndex;
-                        const c = this.cellIndex;
-                        this.par.board[f][c]=1;
-                        console.log("(0,0): "+this.par.board[0][0]);
-                        this.appendChild(fixedimage);
-                    }
+                columna.onpointerenter = function () { this.appendChild(this.par.fichaimagenc) };
+                columna.onpointerleave = function () { this.innerHTML = ""; };
+                columna.onclick = function () {
+                    const imagen = this.par.fichaimagenf.cloneNode(true);
+                    console.log("clase de la ficha: "+imagen.className);
+                    this.onpointerenter = NaN;
+                    this.onpointerleave = NaN;
+                    this.innerHTML = "";
+                    this.onclick = NaN;
+                    const f = this.closest('tr').rowIndex;
+                    const c = this.cellIndex;
+                    this.par.board[f][c] = 1;
+                    console.log("(0,0): " + this.par.board[0][0]);
+                    this.appendChild(imagen);
                 }
 
-                fila.appendChild(columna);
-            }
-            table.appendChild(fila);
+            fila.appendChild(columna);
         }
-        divtable.appendChild(table);
+        table.appendChild(fila);
     }
+    divtable.appendChild(table);
+}
 
 }
