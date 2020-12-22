@@ -4,7 +4,8 @@
 <head>
     <title>Tres en línea</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script type="text/javascript" src="js/match.js"></script>
+    <script type="text/javascript" src="js/PosicionTablero.js"></script>
+    <script type="text/javascript" src="js/Partida.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
 </head>
 
@@ -19,6 +20,8 @@
         </div><br>
         <h3>Ingrese número de columnas del tablero (mínimo 3)</h3>
         <input id="ingrese-n" type="number">
+        <h3>Ingrese el largo de la fila para ganar</h3>
+        <input id="ingrese-n2" type="number" style="margin-left: 55px;">
         <input type="button" onclick="validardatos()" value="Enviar">
     </div>
 
@@ -48,6 +51,10 @@
     </table> -->
     </div>
 
+    <div id="div-ganar">
+        <h3 id="text-ganaste">¡Ganaste!</h3>
+        <button id="boton-ganar" onclick="jugarotravez()"><img src="imgs/refresh-arrow.svg" id="try-again"></button>
+    </div>
 </body>
 <footer>
 

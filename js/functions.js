@@ -1,12 +1,12 @@
 var selectedfigure;
 
-function showboard(fig, nfilas) {
+function showboard(fig, nfilas, filasganar) {
     var x = document.getElementById("div-table");
     var y = document.getElementById("menu");
     //x.style.display = "flex";
     y.style.display = "none";
 
-    var partida = new Partida(fig, nfilas);
+    var partida = new Partida(fig, nfilas, filasganar);
     partida.createboard();
     x.style.display = "flex";
 }
@@ -44,18 +44,27 @@ function validardatos(){
         alert("no ha seleccionado ninguna figura");
     }else{
         const n = document.getElementById("ingrese-n").value;
+        const n2 = document.getElementById("ingrese-n2").value;
+        console.log("n: "+n);
         if(n == ""){
             alert("no se ha ingresado ningún valor en el númeor de filas");
         }else if(n % 1 != 0){
             alert("El número de filas debe ser un número entero");
         } else if(n < 3){
             alert("El número de filas debe ser mayor a dos");
+        }else if(n2 < 3){
+            alert("El largo de la fila para ganar debe ser mayor a dos");
+        }else if(n2>n){
+            alert("El número de filas para ganar debe ser menor al número de filas del tablero");
         }else{
-            showboard(selectedfigure, n);
+            showboard(selectedfigure, n, n2);
         }
     }
 }
 
-function focusoncell(){
-
+function jugarotravez(){
+    const divganar = document.getElementById("div-ganar");
+    const divmenu = document.getElementById("menu");
+    divganar.style.display = "none";
+    divmenu.style.display = "block";
 }

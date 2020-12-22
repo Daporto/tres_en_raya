@@ -133,3 +133,29 @@ th
     width: 70px;
     filter: invert(90%) sepia(16%) saturate(499%) hue-rotate(61deg) brightness(93%) contrast(93%);
 }
+
+#text-ganaste
+{
+    color: #58B21E; 
+    font-size: 50px;
+}
+
+#div-ganar
+{
+    display: none;
+    text-align: center;
+}
+
+#try-again
+{
+    width: 70px;
+    filter: invert(46%) sepia(39%) saturate(6352%) hue-rotate(4deg) brightness(107%) contrast(103%);
+}
+
+#boton-ganar
+{
+    padding: 10px;
+    border-radius: 20%;
+    cursor: pointer;
+    outline: none;
+}
