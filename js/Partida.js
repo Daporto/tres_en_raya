@@ -4,24 +4,39 @@ class Partida {
         this.nfilas = nfilas;
         this.filasganar = filasganar;
         this.board = new Array(this.nfilas);
+        this.enemilineas = new Array();
+        this.enemiposiciones = new Array();
+        this.primerenemigo = false;
+        this.sinopciones = false;
         this.createimage();
     }
 
     createimage() {
         this.fichaimagenc = document.createElement("img");
         this.fichaimagenf = document.createElement("img");
+
+        this.fichaimagenec = document.createElement("img");
+        this.fichaimagenef = document.createElement("img");
         if (this.ficha == 'x') {
             this.fichaimagenc.src = "imgs/x.svg";
             this.fichaimagenc.className = "xopaco";
-
             this.fichaimagenf.src = "imgs/x.svg";
             this.fichaimagenf.className = "x";
+
+            this.fichaimagenec.src = "imgs/circle.svg";
+            this.fichaimagenec.className = "circleopaco";
+            this.fichaimagenef.src = "imgs/circle.svg";
+            this.fichaimagenef.className = "circle";
         } else {
             this.fichaimagenc.src = "imgs/circle.svg";
             this.fichaimagenc.className = "circleopaco";
-
             this.fichaimagenf.src = "imgs/circle.svg";
             this.fichaimagenf.className = "circle";
+
+            this.fichaimagenec.src = "imgs/x.svg";
+            this.fichaimagenec.className = "xopaco";
+            this.fichaimagenef.src = "imgs/x.svg";
+            this.fichaimagenef.className = "x";
         }
     }
 
@@ -63,14 +78,14 @@ class Partida {
         if (newcounter[0] >= this.filasganar || newcounter[1] >= this.filasganar || newcounter[2] >= this.filasganar || newcounter[3] >= this.filasganar) {
             return true;
         } else {
-            this.transmitir(0, -1, 0, f-1, c, newcounter[0], state);
-            this.transmitir(1, -1, 3, f-1, c+1, newcounter[3], state);
-            this.transmitir(1, 0, 1, f, c+1, newcounter[1], state);
-            this.transmitir(1, 1, 2, f+1, c+1, newcounter[2], state);
-            this.transmitir(0, 1, 1, f+1, c, newcounter[1], state);
-            this.transmitir(-1, 1, 3, f+1, c-1, newcounter[3], state);
-            this.transmitir(-1, 0, 1, f, c-1, newcounter[1], state);
-            this.transmitir(-1, -1, 2, f-1, c-1, newcounter[2], state);
+            this.transmitir(0, -1, 0, f - 1, c, newcounter[0], state);
+            this.transmitir(1, -1, 3, f - 1, c + 1, newcounter[3], state);
+            this.transmitir(1, 0, 1, f, c + 1, newcounter[1], state);
+            this.transmitir(1, 1, 2, f + 1, c + 1, newcounter[2], state);
+            this.transmitir(0, 1, 1, f + 1, c, newcounter[1], state);
+            this.transmitir(-1, 1, 3, f + 1, c - 1, newcounter[3], state);
+            this.transmitir(-1, 0, 1, f, c - 1, newcounter[1], state);
+            this.transmitir(-1, -1, 2, f - 1, c - 1, newcounter[2], state);
         }
         return false;
     }
@@ -79,12 +94,58 @@ class Partida {
         if (f < this.nfilas && c < this.nfilas && f >= 0 && c >= 0) {
             const pos = this.board[f][c];
             if (pos.state == state) {
-                console.log("("+f+","+c+")");
+                console.log("(" + f + "," + c + ")");
                 pos.counter[index] = valor;
                 //console.log(pos.counter);
                 this.transmitir(incx, incy, index, f + incy, c + incx, valor, state);
             }
         }
+    }
+
+    ponerfigura(f, c) { 
+        const imagen = this.fichaimagenef.cloneNode(true);
+        const tabla = document.getElementById("tabla");
+        const tr = tabla.querySelectorAll(":scope > tr")[f];
+        const th = tr.querySelectorAll(":scope > th")[c];
+
+        th.onpointerenter = NaN;
+        th.onpointerleave = NaN;
+        th.innerHTML = "";
+        th.onclick = NaN;
+        const gano = this.fijarposicion(1, f, c);
+        th.appendChild(imagen);
+        if (gano) {
+            const divganar = document.getElementById("div-ganar");
+            const divtable = document.getElementById("div-table");
+            divtable.style.display = "none";
+            divganar.style.display = "block";
+        }
+    }
+
+    siguientejugada(){
+        //const linea = 
+    }
+
+    primerajugada(){
+        const tope = parseInt(this.nfilas);
+        console.log(tope);
+        var f = Math.floor(Math.random() * tope);
+        var c = Math.floor(Math.random() * tope);
+        console.log(f,",",c);
+        while(this.board[f][c].state!=0){
+            var f = Math.floor(Math.random() * (this.nfilas+1));
+            var c = Math.floor(Math.random() * (this.nfilas+1));
+        }
+        var dir = Math.floor(Math.random() * 4);
+        const lista = new Array();
+        lista[0]=[f,c];
+        const newlinea = new Linea(dir,lista,this);
+        while(!newlinea.puedecompletarse){
+            dir = Math.floor(Math.random() * 4);
+            newlinea.direccion = dir;
+        }
+        this.enemilineas[this.enemilineas.length-1]=newlinea;
+        this.ponerfigura(f,c);
     }
 
     createboard() {
@@ -145,6 +206,11 @@ class Partida {
                         const divtable = document.getElementById("div-table");
                         divtable.style.display = "none";
                         divganar.style.display = "block";
+                    }
+                    if(!this.primerenemigo){
+                        this.par.primerajugada();
+                    }else{
+                        this.par.siguientejugada();
                     }
                 }
 
